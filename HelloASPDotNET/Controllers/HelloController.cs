@@ -7,6 +7,8 @@ namespace HelloASPDotNET.Controllers
     public class HelloController : Controller
     {
 
+        private static readonly string DocHeader = "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"></head>";
+
         [HttpGet]
         [Route("/helloworld")]
         public IActionResult Index()
@@ -19,7 +21,8 @@ namespace HelloASPDotNET.Controllers
         [Route("/hello")]
         public IActionResult InputPrompt()
         {
-            string htmltext = "<form method=\"POST\" action=\"/hello\">" +
+            string htmltext =   HelloController.DocHeader +
+                                "<form method=\"POST\" action=\"/hello\">" +
                                 "<label for=\"nameinput\">Enter Your Name:</label>" +
                                 "<input type=\"text\" name=\"nameinput\" id=\"nameinput\">" +
                                 "<label for=\"langinput\">Select Language</label>" +
@@ -32,7 +35,8 @@ namespace HelloASPDotNET.Controllers
                                     "<option lang=\"zh\" value=\"zh\">简体中文</option>" +
                                     "<option value=\"sjn\">Sindarin</option>" +
                                 "<input type=\"submit\" value=\"Greet me!\">" +
-                              "</form>";
+                              "</form></html>";
+
 
             return Content(htmltext, "text/html");
 
@@ -43,7 +47,7 @@ namespace HelloASPDotNET.Controllers
         public IActionResult Welcome(string nameinput = "fellow traveller", string langinput = "en")
         {
             string greeting = CreateMessage(nameinput, langinput);
-            return Content($"<h1>{greeting}</h1>", "text/html");
+            return Content($"{HelloController.DocHeader}<h1>{greeting}</h1></html>", "text/html");
         }
 
         public enum LanguageOptions
