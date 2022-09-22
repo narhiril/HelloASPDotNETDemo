@@ -34,6 +34,7 @@ namespace HelloASPDotNET.Controllers
                                     "<option lang=\"ja\" value=\"ja\">日本</option>" +
                                     "<option lang=\"zh\" value=\"zh\">简体中文</option>" +
                                     "<option value=\"sjn\">Sindarin</option>" +
+                                "</select>" +
                                 "<input type=\"submit\" value=\"Greet me!\">" +
                               "</form></html>";
 
@@ -64,16 +65,16 @@ namespace HelloASPDotNET.Controllers
         public static string CreateMessage(LanguageOptions language)
         {
             return language switch
-                {
-                LanguageOptions.de => "Hallo",
-                LanguageOptions.fr => "Bonjour",
-                LanguageOptions.es => "Hola",
-                LanguageOptions.ja => "こんにちは",
-                LanguageOptions.zh => "你好",
-                LanguageOptions.en => "Hello",
-                LanguageOptions.sjn => "Mae govannen",
-                _ => "Hi"
-                };
+                   {
+                        LanguageOptions.de => "Hallo",
+                        LanguageOptions.fr => "Bonjour",
+                        LanguageOptions.es => "Hola",
+                        LanguageOptions.ja => "こんにちは",
+                        LanguageOptions.zh => "你好",
+                        LanguageOptions.en => "Hello",
+                        LanguageOptions.sjn => "Mae govannen",
+                        _ => "Hi"
+                   };
         }
 
         public static string CreateMessage(string name, string languageRawInput)
